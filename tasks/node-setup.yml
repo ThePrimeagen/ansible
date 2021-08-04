@@ -3,11 +3,17 @@
   with_items:
     - nodejs
     - npm
+  tags:
+    - node
 - name: Install N
   npm:
     name: n
     global: yes
+  tags:
+    - node
 - name: Install correct version of Node
   shell: n 14
+  tags:
+    - node
 
 

@@ -10,4 +10,5 @@
     - include: tasks/npm-packages.yml
     - include: tasks/zsh-setup.yml
     - include: tasks/slack-setup.yml
+    - include: tasks/nvim-setup.yml
 

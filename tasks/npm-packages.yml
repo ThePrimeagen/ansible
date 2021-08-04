@@ -2,12 +2,18 @@
   npm:
     name: yarn
     global: yes
+  tags:
+    - node
 - name: Install Typescript server
   npm:
     name: typescript-language-server
     global: yes
+  tags:
+    - node
 - name: Install Typescript
   npm:
     name: typescript
     global: yes
+  tags:
+    - node
 

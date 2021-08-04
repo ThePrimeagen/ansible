@@ -1,35 +1,33 @@
-- name: kdenlive ppa (ppa:kdenlive/kdenlive-stable)
-  apt_repository:
-   repo: ppa:kdenlive/kdenlive-stable
-   state: present
-   update_cache: True
-
-- name: Install packages
+- name: Install System Packages 1 (build-essential, cmake, pkg-config, pthread)
+  apt:
+    name: ["build-essential", "cmake", "pkg-config", "libpthread-stubs0-dev"]
+  tags:
+    - neovim
+    - core
+    - all
+- name: Install System Packages 2 (lua, unzip, libtool, libtool-bin, gettext)
+  apt:
+    name: [ "lua5.1", "unzip", "libtool", "libtool-bin", "gettext"]
+  tags:
+    - neovim
+    - core
+- name: Install System Packages 3 (the rest)
   apt: name={{item}}
   with_items:
     - curl
     - htop
-    - stow
-    - tmux
-    - buildessential
-    - wireshark
     - golang
-    - fzf
     - lsof
-    - kdenlive
     - i3
-    - gimp
     - ccache
     - ninja-build
-    - yarn
     - python3-pip
-    - xclip
-    - slack
     - dconf-editor
     - nvidia-settings
     - brave-browser
     - pavucontrol
     - clangd
-    - screenkey
-    - lua
-    - tldr
+  tags:
+    - core
+
+

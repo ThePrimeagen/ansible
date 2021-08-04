@@ -1,0 +1,22 @@
+- name: kdenlive ppa (ppa:kdenlive/kdenlive-stable)
+  apt_repository:
+   repo: ppa:kdenlive/kdenlive-stable
+   state: present
+   update_cache: True
+  tags:
+    - productivity
+
+- name: Install packages
+  apt: name={{item}}
+  with_items:
+    - stow
+    - tmux
+    - wireshark
+    - fzf
+    - kdenlive
+    - gimp
+    - xclip
+    - screenkey
+    - tldr
+  tags:
+    - productivity
