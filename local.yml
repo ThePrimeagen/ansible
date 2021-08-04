@@ -1,5 +1,13 @@
 - hosts: localhost
   become: true
+  pre_tasks:
+    - name: update repositories
+      apt: update_cache=yes
+      changed_when: False
   tasks:
-  - name: Install htop
-    apt: name=htop
+    - include: tasks/core-setup.yml
+    - include: tasks/node-setup.yml
+    - include: tasks/npm-packages.yml
+    - include: tasks/zsh-setup.yml
+    - include: tasks/slack-setup.yml
+

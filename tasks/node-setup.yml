@@ -1,0 +1,13 @@
+- name: Install node & npm
+  apt: name={{item}}
+  with_items:
+    - nodejs
+    - npm
+- name: Install N
+  npm:
+    name: n
+    global: yes
+- name: Install correct version of Node
+  shell: n 14
+
+

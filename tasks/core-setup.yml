@@ -1,0 +1,35 @@
+- name: kdenlive ppa (ppa:kdenlive/kdenlive-stable)
+  apt_repository:
+   repo: ppa:kdenlive/kdenlive-stable
+   state: present
+   update_cache: True
+
+- name: Install packages
+  apt: name={{item}}
+  with_items:
+    - curl
+    - htop
+    - stow
+    - tmux
+    - buildessential
+    - wireshark
+    - golang
+    - fzf
+    - lsof
+    - kdenlive
+    - i3
+    - gimp
+    - ccache
+    - ninja-build
+    - yarn
+    - python3-pip
+    - xclip
+    - slack
+    - dconf-editor
+    - nvidia-settings
+    - brave-browser
+    - pavucontrol
+    - clangd
+    - screenkey
+    - lua
+    - tldr

@@ -1,0 +1,6 @@
+- name: Install ZSH
+  apt: name=zsh
+- name: Change shell to zsh
+  shell: chsh -s $(which zsh)
+- name: Change shell to zsh
+  shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
