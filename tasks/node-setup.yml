@@ -4,16 +4,19 @@
     - nodejs
     - npm
   tags:
+    - all
     - node
 - name: Install N
   npm:
     name: n
     global: yes
   tags:
+    - all
     - node
 - name: Install correct version of Node
   shell: n 14
   tags:
+    - all
     - node
 
 

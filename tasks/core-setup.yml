@@ -2,13 +2,14 @@
   apt:
     name: ["build-essential", "cmake", "pkg-config", "libpthread-stubs0-dev"]
   tags:
+    - all
     - neovim
     - core
-    - all
 - name: Install System Packages 2 (lua, unzip, libtool, libtool-bin, gettext)
   apt:
     name: [ "lua5.1", "unzip", "libtool", "libtool-bin", "gettext"]
   tags:
+    - all
     - neovim
     - core
 - name: Install System Packages 3 (the rest)
@@ -24,10 +25,10 @@
     - python3-pip
     - dconf-editor
     - nvidia-settings
-    - brave-browser
     - pavucontrol
     - clangd
   tags:
+    - all
     - core
 
 

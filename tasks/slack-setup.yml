@@ -3,10 +3,12 @@
     url: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.8.0-amd64.deb
     dest: /tmp/slack.deb
   tags:
+    - all
     - slack
 - name: Install Slack .deb package
   apt:
     deb: /tmp/slack.deb
   tags:
+    - all
     - slack
 

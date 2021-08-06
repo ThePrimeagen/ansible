@@ -1,17 +1,17 @@
 - name: Neovim Installation
   ansible.builtin.git:
     repo: 'https://github.com/neovim/neovim.git'
-    dest: $HOME/neovim
+    dest: "{{ lookup('env', 'HOME') }}/neovim"
   tags:
     - all
     - neovim
 - name: Build neovim
-  shell: cd $HOME/neovim && make
+  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make"
   tags:
     - all
     - neovim
 - name: Install neovim
-  shell: cd $HOME/neovim && sudo make install
+  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make install"
   tags:
     - all
     - neovim
