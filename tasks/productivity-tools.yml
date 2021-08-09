@@ -4,7 +4,7 @@
    state: present
    update_cache: True
   tags:
-    - all
+    - install
     - productivity
 
 - name: Install packages
@@ -20,17 +20,17 @@
     - screenkey
     - tldr
   tags:
-    - all
+    - install
     - productivity
 - name: dotfile install
   ansible.builtin.git:
     repo: 'https://github.com/ThePrimeagen/.dotfiles'
     dest: $HOME/dotfiles
   tags:
-    - all
+    - install
     - dotfiles
 - name: stow dotfiles
   shell: cd $HOME/dotfiles && ./ubuntu
   tags:
-    - all
+    - install
     - dotfiles

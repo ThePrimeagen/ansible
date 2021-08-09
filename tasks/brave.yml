@@ -3,23 +3,23 @@
     name: ["curl", "apt-transport-https"]
   tags:
     - brave
-    - all
+    - install
 - name: Brave Browser archive-keyring.gpg download
   get_url:
     url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
     dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg
   tags:
     - brave
-    - all
+    - install
 - name: Brave Browser PPA setting
   shell: echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | tee /etc/apt/sources.list.d/brave-browser-release.list
   tags:
     - brave
-    - all
+    - install
 - name: Brave Browser apt installation
   apt:
     update_cache: yes
     name: brave-browser
   tags:
     - brave
-    - all
+    - install
