@@ -5,6 +5,7 @@
     mode: 0700
     state: directory
   tags:
+    - dotfiles
     - install
     - ssh
 - name: Install ssh key
@@ -14,5 +15,11 @@
     dest: "{{ dest_key }}"
     mode: 0600
   tags:
+    - dotfiles
     - install
     - ssh
+- name: Set authorized key took from file
+  authorized_key:
+    user: "{{ lookup('env', 'USER') }}"
+    state: present
+    key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"

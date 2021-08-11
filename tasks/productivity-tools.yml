@@ -6,11 +6,9 @@
   tags:
     - install
     - productivity
-
 - name: Install packages
   apt: name={{item}}
   with_items:
-    - stow
     - tmux
     - wireshark
     - fzf
@@ -22,15 +20,3 @@
   tags:
     - install
     - productivity
-- name: dotfile install
-  ansible.builtin.git:
-    repo: 'https://github.com/ThePrimeagen/.dotfiles'
-    dest: $HOME/dotfiles
-  tags:
-    - install
-    - dotfiles
-- name: stow dotfiles
-  shell: cd $HOME/dotfiles && ./ubuntu
-  tags:
-    - install
-    - dotfiles

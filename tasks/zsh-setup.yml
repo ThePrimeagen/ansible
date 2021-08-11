@@ -3,11 +3,13 @@
   tags:
     - install
     - productivity
+    - dotfiles
     - zsh
 - name: Change shell to zsh
   shell: chsh -s $(which zsh)
   tags:
     - install
+    - dotfiles
     - productivity
     - zsh
 - name: Change shell to zsh
@@ -15,4 +17,5 @@
   tags:
     - install
     - productivity
+    - dotfiles
     - zsh
