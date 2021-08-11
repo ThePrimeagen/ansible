@@ -1,18 +1,18 @@
-- name: Install a private SSH key
-  vars:
-    source_key: "{{ lookup('env', 'HOME') }}/ansible/.ssh/id_rsa"
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
-  tasks:
-  - name: Ensure .ssh directory exists.
-    file:
-      dest: "{{ dest_key | dirname }}"
-      mode: 0700
-      owner: user
-      state: directory
-  - name: Install ssh key
-    copy:
-      src: "{{ source_key }}"
-      dest: "{{ dest_key }}"
-      mode: 0600
-      owner: user
-
+- name: Ensure .ssh directory exists.
+  become_user: root
+  file:
+    dest: "{{ dest_key | dirname }}"
+    mode: 0700
+    state: directory
+  tags:
+    - install
+    - ssh
+- name: Install ssh key
+  become_user: root
+  copy:
+    src: "{{ source_key }}"
+    dest: "{{ dest_key }}"
+    mode: 0600
+  tags:
+    - install
+    - ssh
