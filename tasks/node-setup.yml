@@ -1,4 +1,4 @@
-- name: Install node & npm
+- name: Curl n
   apt: name={{item}}
   with_items:
     - nodejs
