@@ -17,4 +17,5 @@
     - include: tasks/nvim-setup.yml
     - include: tasks/brave.yml
     - include: tasks/dotfiles.yml
+    - include: tasks/personal-projects.yml
 

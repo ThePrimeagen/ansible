@@ -1,0 +1,60 @@
+- name: Personal Project Harpoon
+  ansible.builtin.git:
+    repo: 'git@github.com:ThePrimeagen/harpoon.git'
+    bare: true
+    dest: "{{ lookup('env', 'HOME') }}/personal/harpoon"
+  tags:
+    - install
+    - dotfiles
+    - personal-project
+- name: Harpoon Master Checkout
+  shell: cd ~/personal/harpoon && git fetch && git worktree add master master
+  tags:
+    - install
+    - dotfiles
+    - personal-project
+- name: Personal Project Git-Worktrees
+  ansible.builtin.git:
+    repo: 'git@github.com:ThePrimeagen/git-worktree.nvim.git'
+    bare: true
+    dest: "{{ lookup('env', 'HOME') }}/personal/git-worktree.nvim"
+  tags:
+    - install
+    - dotfiles
+    - personal-project
+- name: Git worktree Master Checkout
+  shell: cd ~/personal/git-worktree.nvim && git fetch && git worktree add master master
+  tags:
+    - install
+    - dotfiles
+    - personal-project
+- name: Personal Project Refactoring
+  ansible.builtin.git:
+    repo: 'git@github.com:ThePrimeagen/refactoring.nvim'
+    bare: true
+    dest: "{{ lookup('env', 'HOME') }}/personal/refactoring.nvim"
+  tags:
+    - install
+    - personal-project
+    - dotfiles
+- name: Refactoring checkout
+  shell: cd ~/personal/refactoring.nvim && git fetch && git worktree add master master
+  tags:
+    - install
+    - dotfiles
+    - personal-project
+- name: Personal Project Vim With Me
+  ansible.builtin.git:
+    repo: 'git@github.com:ThePrimeagen/vim-with-me'
+    bare: true
+    dest: "{{ lookup('env', 'HOME') }}/personal/vim-with-me"
+  tags:
+    - install
+    - personal-project
+    - dotfiles
+- name: vim-with-me checkout
+  shell: cd ~/personal/vim-with-me && git fetch && git worktree add ui ui
+  tags:
+    - install
+    - dotfiles
+    - personal-project
