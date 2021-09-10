@@ -6,4 +6,3 @@ RUN apt update && apt install -y software-properties-common && apt-add-repositor
 COPY . .
 CMD ["sh", "-c", "ansible-playbook $TAGS local.yml"]
 
-

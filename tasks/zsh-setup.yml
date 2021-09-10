@@ -12,8 +12,17 @@
     - dotfiles
     - productivity
     - zsh
-- name: Change shell to zsh
+- name: Oh-My-Zsh
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+  tags:
+    - install
+    - productivity
+    - dotfiles
+    - zsh
+- name: Install zsh-autosuggestions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
   tags:
     - install
     - productivity

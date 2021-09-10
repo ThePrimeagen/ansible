@@ -1,8 +1,6 @@
-- name: Curl n
-  apt: name={{item}}
-  with_items:
-    - nodejs
-    - npm
+- name: Install nodejs and npm
+  apt:
+    name: ["nodejs", "npm"]
   tags:
     - install
     - node
