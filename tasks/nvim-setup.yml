@@ -32,7 +32,7 @@
     - dotfiles
     - neovim
 - name: Install vim Plugins
-  shell: nvim +PlugInstall +qall +silent
+  shell: nvim +PlugInstall +qall
   tags:
     - install
     - dotfiles
