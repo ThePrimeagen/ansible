@@ -41,6 +41,7 @@ no vault
 make it clone
 --become-user theprimeagen
 -t install .  I just keep forgetting this...
+- clone it with https then change remote to ssh once ssh is up.
 
 ### Personal projects
 - I have to check for existance before doing anything else.  Else it doesn't

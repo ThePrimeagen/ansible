@@ -1,4 +1,5 @@
 - name: required libraries for brave
+  become: true
   apt:
     name: ["curl", "apt-transport-https"]
   tags:
@@ -12,11 +13,13 @@
     - brave
     - install
 - name: Brave Browser PPA setting
+  become: true
   shell: echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | tee /etc/apt/sources.list.d/brave-browser-release.list
   tags:
     - brave
     - install
 - name: Brave Browser apt installation
+  become: true
   apt:
     update_cache: yes
     name: brave-browser

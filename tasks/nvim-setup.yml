@@ -11,16 +11,19 @@
     - install
     - neovim
 - name: Install neovim
+  become: true
   shell: "cd {{ lookup('env', 'HOME') }}/neovim && make install"
   tags:
     - install
     - neovim
 - name: Neovim Plugin Development 1
+  become: true
   apt: name=luarocks
   tags:
     - install
     - neovim
 - name: Neovim Plugin Development 2 luacheck
+  become: true
   shell: luarocks install luacheck
   tags:
     - install

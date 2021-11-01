@@ -4,12 +4,15 @@
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
     personal: "{{ lookup('env', 'HOME') }}/personal"
   pre_tasks:
-  - name: Install packages only when the apt process isn't locked
+  - name: Update Apt
     become: true
     apt:
       force_apt_get: true
       update_cache: true
       state: present
+    tags:
+      - install
+      - core
   tasks:
     - include: tasks/ssh.yml
     - include: tasks/git-setup.yml
