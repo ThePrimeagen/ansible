@@ -1,60 +1,115 @@
+- name: Harpoon exists
+  stat:
+    path: "{{ personal }}/harpoon"
+  register: harpoon
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
 - name: Personal Project Harpoon
   ansible.builtin.git:
     repo: 'git@github.com:ThePrimeagen/harpoon.git'
     bare: true
-    dest: "{{ lookup('env', 'HOME') }}/personal/harpoon"
+    dest: "{{ personal }}/harpoon"
   tags:
     - install
     - dotfiles
+    - neovim
     - personal-project
+  when: harpoon.stat.exists == False
 - name: Harpoon Master Checkout
   shell: cd ~/personal/harpoon && git fetch && git worktree add master master
   tags:
     - install
     - dotfiles
+    - neovim
+    - personal-project
+  when: harpoon.stat.exists == False
+
+- name: git-worktree exists
+  stat:
+    path: "{{ personal }}/git-worktree.nvim"
+  register: worktree
+  tags:
+    - install
+    - dotfiles
+    - neovim
     - personal-project
 - name: Personal Project Git-Worktrees
   ansible.builtin.git:
     repo: 'git@github.com:ThePrimeagen/git-worktree.nvim.git'
     bare: true
-    dest: "{{ lookup('env', 'HOME') }}/personal/git-worktree.nvim"
+    dest: "{{ personal }}/git-worktree.nvim"
   tags:
     - install
     - dotfiles
+    - neovim
     - personal-project
+  when: worktree.stat.exists == False
 - name: Git worktree Master Checkout
   shell: cd ~/personal/git-worktree.nvim && git fetch && git worktree add master master
   tags:
     - install
+    - neovim
     - dotfiles
+    - personal-project
+  when: worktree.stat.exists == False
+
+- name: refactoring exists
+  stat:
+    path: "{{ personal }}/refactoring.nvim"
+  register: refactoring
+  tags:
+    - install
+    - dotfiles
+    - neovim
     - personal-project
 - name: Personal Project Refactoring
   ansible.builtin.git:
     repo: 'git@github.com:ThePrimeagen/refactoring.nvim'
     bare: true
-    dest: "{{ lookup('env', 'HOME') }}/personal/refactoring.nvim"
+    dest: "{{ personal }}/refactoring.nvim"
   tags:
     - install
     - personal-project
+    - neovim
     - dotfiles
+  when: refactoring.stat.exists == False
 - name: Refactoring checkout
   shell: cd ~/personal/refactoring.nvim && git fetch && git worktree add master master
   tags:
     - install
     - dotfiles
+    - neovim
+    - personal-project
+  when: refactoring.stat.exists == False
+
+- name: vim-with-me exists
+  stat:
+    path: "{{ personal }}/vim-with-me"
+  register: vwm
+  tags:
+    - install
+    - dotfiles
+    - neovim
     - personal-project
 - name: Personal Project Vim With Me
   ansible.builtin.git:
     repo: 'git@github.com:ThePrimeagen/vim-with-me'
     bare: true
-    dest: "{{ lookup('env', 'HOME') }}/personal/vim-with-me"
+    dest: "{{ personal }}/vim-with-me"
   tags:
     - install
     - personal-project
+    - neovim
     - dotfiles
+  when: vwm.stat.exists == False
 - name: vim-with-me checkout
   shell: cd ~/personal/vim-with-me && git fetch && git worktree add ui ui
   tags:
     - install
     - dotfiles
+    - neovim
     - personal-project
+  when: vwm.stat.exists == False

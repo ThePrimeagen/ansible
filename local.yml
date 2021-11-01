@@ -1,21 +1,26 @@
 - hosts: localhost
-  become: true
   vars:
     source_key: "./.ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    personal: "{{ lookup('env', 'HOME') }}/personal"
   pre_tasks:
-    - name: update repositories
-      apt: update_cache=yes
-      changed_when: False
+  - name: Install packages only when the apt process isn't locked
+    become: true
+    apt:
+      force_apt_get: true
+      update_cache: true
+      state: present
   tasks:
     - include: tasks/ssh.yml
+    - include: tasks/git-setup.yml
     - include: tasks/core-setup.yml
     - include: tasks/node-setup.yml
     - include: tasks/npm-packages.yml
     - include: tasks/zsh-setup.yml
     - include: tasks/slack-setup.yml
+    - include: tasks/personal-projects.yml
     - include: tasks/nvim-setup.yml
     - include: tasks/brave.yml
     - include: tasks/dotfiles.yml
-    - include: tasks/personal-projects.yml
+    - include: tasks/productivity-tools.yml
 

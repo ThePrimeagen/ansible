@@ -12,13 +12,27 @@
     - dotfiles
     - productivity
     - zsh
-- name: Oh-My-Zsh
-  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+
+- name: Check that the somefile.conf exists
+  stat:
+    path: /home/theprimeagen/.oh-my-zsh
+  register: oh_my_stats
   tags:
     - install
     - productivity
     - dotfiles
     - zsh
+
+- name: Oh-My-Zsh
+  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+  tags:
+    - install
+    - productivity
+    - dotfiles
+    - zsh
+  when: oh_my_stats.stat.exists == False
+  become_user: theprimeagen
+
 - name: Install zsh-autosuggestions
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'

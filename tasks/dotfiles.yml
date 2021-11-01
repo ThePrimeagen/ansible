@@ -3,6 +3,7 @@
   tags:
     - install
     - dotfiles
+    - stow
 - name: Cloning .dotfiles
   ansible.builtin.git:
     repo: 'git@github.com:ThePrimeagen/.dotfiles.git'
@@ -14,8 +15,10 @@
   tags:
     - install
     - dotfiles
+    - stow
 - name: Stow dotfiles
   shell: cd $HOME/.dotfiles && ./ubuntu
   tags:
     - install
     - dotfiles
+    - stow
