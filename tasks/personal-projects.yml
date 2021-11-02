@@ -113,3 +113,14 @@
     - neovim
     - personal-project
   when: vwm.stat.exists == False
+
+- name: ANIMOOOS
+  ansible.builtin.git:
+    repo: 'git@github.com:ThePrimeagen/anime.git'
+    dest: "{{ personal }}/anime"
+  tags:
+    - install
+    - personal-project
+    - neovim
+    - dotfiles
+    - anime

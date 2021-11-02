@@ -1,9 +1,30 @@
 - name: Install nodejs and npm
+  become: true
   apt:
     name: ["nodejs", "npm"]
   tags:
     - install
     - node
+
+- name: npmjs prefix
+  shell: mkdir -p ~/.local/.npm-global
+  tags:
+  - install
+  - node
+
+- name: npmjs global settings
+  shell: npm config set prefix '~/.local/.npm-global'
+  tags:
+  - install
+  - node
+
+- name: npmjs global settings export path in case I don't have dotfiles installed
+  shell: export PATH=~/.local/.npm-global/bin:$PATH
+  tags:
+  - install
+  - node
+  - npm-path
+
 - name: Install N
   npm:
     name: n
@@ -11,6 +32,7 @@
   tags:
     - install
     - node
+
 - name: Install correct version of Node
   shell: n 14
   tags:
