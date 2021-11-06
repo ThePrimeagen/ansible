@@ -6,7 +6,7 @@
     - install
     - neovim
 - name: Build neovim
-  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make"
+  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make -j 20"
   tags:
     - install
     - neovim
@@ -29,13 +29,7 @@
     - install
     - neovim
 - name: Install Vim-Plug
-  shell: curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  tags:
-    - install
-    - dotfiles
-    - neovim
-- name: Install vim Plugins
-  shell: nvim +PlugInstall +qall
+  shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   tags:
     - install
     - dotfiles

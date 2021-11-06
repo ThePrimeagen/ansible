@@ -12,6 +12,12 @@
   - install
   - node
 
+- name: add npmjs to path
+  shell: PATH=~/.local/.npm-global/bin:$PATH
+  tags:
+  - install
+  - node
+
 - name: npmjs global settings
   shell: npm config set prefix '~/.local/.npm-global'
   tags:

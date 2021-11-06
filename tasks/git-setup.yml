@@ -12,3 +12,17 @@
     value: "ThePrimeagen"
   tags:
   - git-personal
+- name: Git Rustin
+  git_config:
+    name: user.email
+    scope: global
+    value: "rustin.deeznuts@gmail.com"
+  tags:
+  - git-rustin
+- name: Git personal setup name
+  git_config:
+    name: user.name
+    scope: global
+    value: "RustLover69"
+  tags:
+  - git-rustin
