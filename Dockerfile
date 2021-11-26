@@ -1,5 +1,4 @@
 FROM ubuntu:focal AS base
-ARG TAGS
 WORKDIR /usr/local/bin
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
@@ -12,6 +11,7 @@ RUN apt-get update && \
     apt-get autoremove --yes
 
 FROM base AS prime
+ARG TAGS
 RUN addgroup --gid 1000 theprimeagen
 RUN adduser --gecos theprimeagen --uid 1000 --gid 1000 --disabled-password theprimeagen
 USER theprimeagen
