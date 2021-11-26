@@ -1,3 +1,8 @@
+- name: Remove neovim
+  shell: rm -rf ~/neovim
+  tags:
+    - install
+    - neovim
 - name: Clone Neovim
   ansible.builtin.git:
     repo: 'https://github.com/neovim/neovim.git'

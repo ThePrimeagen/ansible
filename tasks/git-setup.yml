@@ -26,3 +26,17 @@
     value: "RustLover69"
   tags:
   - git-rustin
+- name: Netflix
+  git_config:
+    name: user.email
+    scope: global
+    value: "mpaulson@netflix.com"
+  tags:
+  - git-netflix
+- name: Git personal setup name
+  git_config:
+    name: user.name
+    scope: global
+    value: "mpaulson"
+  tags:
+  - git-netflix
