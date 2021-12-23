@@ -1,35 +1,20 @@
 - name: Install ZSH
   apt: name=zsh
-  tags:
-    - install
-    - productivity
-    - dotfiles
-    - zsh
+  tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
+    
 - name: Change shell to zsh
   shell: chsh -s $(which zsh)
-  tags:
-    - install
-    - dotfiles
-    - productivity
-    - zsh
+  tags: *tags_for_zsh_tasks
 
 - name: Check that the somefile.conf exists
   stat:
     path: /home/theprimeagen/.oh-my-zsh
   register: oh_my_stats
-  tags:
-    - install
-    - productivity
-    - dotfiles
-    - zsh
+  tags: *tags_for_zsh_tasks
 
 - name: Oh-My-Zsh
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
-  tags:
-    - install
-    - productivity
-    - dotfiles
-    - zsh
+  tags: *tags_for_zsh_tasks
   when: oh_my_stats.stat.exists == False
   become_user: theprimeagen
 
@@ -37,8 +22,4 @@
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
     dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
-  tags:
-    - install
-    - productivity
-    - dotfiles
-    - zsh
+  tags: *tags_for_zsh_tasks
