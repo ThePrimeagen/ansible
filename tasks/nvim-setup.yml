@@ -46,3 +46,10 @@
     - install
     - dotfiles
     - neovim
+- name: Install vim Plugins
+  shell: nvim +PlugInstall +qall +silent
+  tags:
+    - install
+    - dotfiles
+    - neovim
+
