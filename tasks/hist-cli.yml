@@ -1,0 +1,7 @@
+- name: Required libraries for hist-cli for (cargo package)
+  become: true
+  apt:
+    name: ["libfreetype6-dev"]
+  tags:
+    - hist
+    - install
