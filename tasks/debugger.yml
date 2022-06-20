@@ -1,0 +1,17 @@
+- name: Debugger JavaScript Exists?
+  stat:
+    path: "{{ personal }}/microsoft-sucks/vscode-node-debug2"
+  register: node_debugger
+  tags:
+    - install
+    - debugger
+
+- name: Debugger - JavaScript
+  ansible.builtin.git:
+    repo: 'git@github.com:microsoft/vscode-node-debug2.git'
+    dest: "{{ personal }}/microsoft-sucks/vscode-node-debug2"
+  tags:
+    - install
+    - debugger
+  when: node_debugger.stat.exists == False
+
