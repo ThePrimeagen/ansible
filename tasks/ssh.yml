@@ -32,3 +32,9 @@
     key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
   with_fileglob:
   - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"
+- name: Add github.com to known hosts
+  shell: ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+  tags:
+    - dotfiles
+    - install
+    - ssh
